@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   generator:
-    image: my-registry:55000/gen:ci-7
+    image: my-registry:55000/gen:ci-${GENERATOR_BUILD_NUMBER-10}
     #ports:
     #  - "8080:80"
   mail:
@@ -12,5 +12,7 @@ services:
     #-- ports: are not required as containers use private network,
     # these have only been used for host o/s testing
   integration:
-    image: my-registry:55000/gen:integration-7
+    image: my-registry:55000/gen:integration-${BUILD_NUMBER-10}
     build: .
+    environment:
+      - TEAMCITY_PROJECT_NAME
