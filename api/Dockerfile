@@ -9,7 +9,7 @@ COPY . .
 RUN dotnet publish -o /publish
 
 # Runtime Image Stage
-FROM microsoft/dotnet:2.1-runtime
+FROM microsoft/dotnet:2.1.5-runtime-stretch-slim-arm32v7
 WORKDIR /publish
 COPY --from=build-env /publish .
 ENTRYPOINT ["dotnet", "api.dll"]

@@ -28,7 +28,7 @@ RUN dotnet publish api/api.csproj -o /publish /property:PublishWithAspNetCoreTar
 
 #runtime
 
-FROM microsoft/dotnet:2.1-runtime
+FROM microsoft/dotnet:2.1.5-runtime-stretch-slim-arm32v7
 
 COPY --from=build-env /publish /publish
 

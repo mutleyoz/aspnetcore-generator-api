@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-api-7C2DEA3B-3FE0-4E9C-A3C6-809300076350</UserSecretsId>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>    
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
