@@ -1,11 +1,19 @@
-version: '3'
+version: '3.1'
 
 services:
   generator:
     image: my-registry:55000/gen:ci-${GENERATOR_BUILD_NUMBER-15}
     ports:
       - "${PORT_GENERATOR-8080}:80"
+    deploy:
+      placement:
+          constraints:
+              - node.labels.arc==arm      
   mail:
     image: mailhog/mailhog
     ports:
       - "${PORT_MAILHOG-8081}:8025"
+    deploy:
+      placement:
+          constraints:
+              - node.labels.arc==x64
