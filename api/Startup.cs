@@ -25,8 +25,7 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddXmlSerializerFormatters();
+            services.AddMvc().AddXmlSerializerFormatters();
                 
             services.AddSwaggerGen(c =>
             {
@@ -53,6 +52,8 @@ namespace api
             app.UseRewriter(redirectRootToSwagger);
 
             var mailServerConfig = mailServerConfigAccessor.Value;
+
+            loggerFactory.AddConsole();
         }
     }
 }

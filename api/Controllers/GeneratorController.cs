@@ -9,6 +9,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 
 namespace api.Controllers
 {
@@ -19,12 +20,17 @@ namespace api.Controllers
         public string MAIL_HOST = "mail";
         public int MAIL_PORT = 1025;
 
-        public GenerateController(IOptions<MailServerConfig> mailServerConfigAccessor)
+        private readonly ILogger _logger;
+
+        public GenerateController(IOptions<MailServerConfig> mailServerConfigAccessor, ILogger<GenerateController> logger)
         {
             var config = mailServerConfigAccessor.Value;
 
             MAIL_HOST = config.Host;
             MAIL_PORT = config.Port;
+
+            _logger = logger;
+            _logger.LogInformation($"Starting mail server on {MAIL_HOST}:{MAIL_PORT}");
         }
 
         [HttpPost]
