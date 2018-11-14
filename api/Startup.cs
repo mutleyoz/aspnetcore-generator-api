@@ -52,8 +52,7 @@ namespace api
             app.UseRewriter(redirectRootToSwagger);
 
             var mailServerConfig = mailServerConfigAccessor.Value;
-
-            loggerFactory.AddConsole();
+            Console.WriteLine($"Mail server: {mailServerConfig.Host}:{mailServerConfig.Port}");
         }
     }
 }
