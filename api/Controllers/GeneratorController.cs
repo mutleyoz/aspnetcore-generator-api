@@ -28,9 +28,6 @@ namespace api.Controllers
 
             MAIL_HOST = config.Host;
             MAIL_PORT = config.Port;
-
-            _logger = logger;
-            _logger.LogInformation($"Starting mail server on {MAIL_HOST}:{MAIL_PORT}");
         }
 
         [HttpPost]
